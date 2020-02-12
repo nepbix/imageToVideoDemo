@@ -67,7 +67,7 @@ class ViewController: UIViewController {
         guard let videoWriter = try? AVAssetWriter(outputURL: imageArrayToVideoURL as URL, fileType: AVFileType.mp4) else {
             fatalError("AVAssetWriter error")
         }
-        let outputSettings = [AVVideoCodecKey : AVVideoCodecH264, AVVideoWidthKey : NSNumber(value: Float(outputSize.width)), AVVideoHeightKey : NSNumber(value: Float(outputSize.height))] as [String : Any]
+        let outputSettings = [AVVideoCodecKey : AVVideoCodecType.h264, AVVideoWidthKey : NSNumber(value: Float(outputSize.width)), AVVideoHeightKey : NSNumber(value: Float(outputSize.height))] as [String : Any]
         guard videoWriter.canApply(outputSettings: outputSettings, forMediaType: AVMediaType.video) else {
             fatalError("Negative : Can't apply the Output settings...")
         }
@@ -187,7 +187,7 @@ class ViewController: UIViewController {
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //this is the animation part
-        var time = [0.00001, 3, 6, 9, 12] //I used this time array to determine the start time of a frame animation. Each frame will stay for 3 secs, thats why their difference is 3
+        let time = [0.00001, 3, 6, 9, 12] //I used this time array to determine the start time of a frame animation. Each frame will stay for 3 secs, thats why their difference is 3
         var imgarray = [UIImage]()
 
         for image in 0..<5 {
