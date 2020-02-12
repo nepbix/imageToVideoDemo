@@ -7,6 +7,8 @@
 //
 import UIKit
 import AVFoundation
+import Photos
+
 
 extension ViewController {
     func drawImage(image foreGroundImage: UIImage, inImage backgroundImage: UIImage, atPoint point: CGPoint) -> UIImage {
@@ -111,7 +113,6 @@ extension ViewController {
                 videoWriterInput.markAsFinished()
                 videoWriter.finishWriting { () -> Void in
                     print("-----video1 url = \(self.imageArrayToVideoURL)")
-
                     self.asset = AVAsset(url: self.imageArrayToVideoURL as URL)
                     //self.exportVideoWithAnimation()
                 }
