@@ -16,6 +16,7 @@ extension ViewController {
 //        guard let firstAsset = firstAsset, let secondAsset = secondAsset else { return }
 
         activityMonitor.startAnimating()
+        activityMonitor.isHidden = false
 
         // 1 - Create AVMutableComposition object. This object will hold your AVMutableCompositionTrack instances.
         let mixComposition = AVMutableComposition()
@@ -98,6 +99,7 @@ extension ViewController {
 
         // Cleanup assets
         activityMonitor.stopAnimating()
+        activityMonitor.isHidden = true
 
         guard session.status == AVAssetExportSession.Status.completed,
             let outputURL = session.outputURL else { return }

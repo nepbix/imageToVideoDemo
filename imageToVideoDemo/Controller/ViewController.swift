@@ -20,18 +20,16 @@ class ViewController: UIViewController {
     var selectedPhotosArray = [UIImage]()
     var imageArrayToVideoURL = NSURL()
     let audioIsEnabled: Bool = false //if your video has no sound
-    
-    
+
+
     var asset: AVAsset!
-    @IBOutlet weak var playImages: UIButton!
-    @IBOutlet weak var playVideos: UIButton!
 
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet var activityMonitor: UIActivityIndicatorView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.activityMonitor.isHidden = true
     }
 
     @IBAction func mergeImageAction(_ sender: Any) {
@@ -44,15 +42,11 @@ class ViewController: UIViewController {
     }
 
     @IBAction func playButtonAction(_ sender: Any) {
-        switch sender as? UIButton {
-        case playImages:
-            playVideo(with: imageArrayToVideoURL as URL)
-        case playVideos:
-            if let galleryAsset = self.asset {
-                let localAsset = AVAsset(url: imageArrayToVideoURL as URL)
-                self.mergeVid(with: localAsset, secondAsset: galleryAsset, audioAsset: nil)
-            }
-        default: break
+        self.statusLabel.text = ""
+        if let galleryAsset = self.asset {
+            let localVideoAsset = AVAsset(url: imageArrayToVideoURL as URL)
+            let localAudioAsset = AVAsset(url: Bundle.main.url(forResource: "sampleAudio", withExtension: "mp3")!)
+            self.mergeVid(with: localVideoAsset, secondAsset: galleryAsset, audioAsset: localAudioAsset)
         }
     }
 
@@ -77,6 +71,7 @@ extension ViewController: UIImagePickerControllerDelegate {
         let message = "Video Loaded"
         let avAsset = AVAsset(url: url)
         self.asset = avAsset
+        self.statusLabel.text = "Video Asset loaded from Gallery."
         let alert = UIAlertController(title: "Asset Loaded", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
         present(alert, animated: true, completion: nil)
