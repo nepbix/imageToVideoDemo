@@ -30,6 +30,7 @@
 		1B9E065023F316CF0042A553 /* top.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1B9E064E23F316CF0042A553 /* top.JPG */; };
 		DE550FC123F3893100D6E822 /* VC+MergeVideos.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE550FC023F3893100D6E822 /* VC+MergeVideos.swift */; };
 		DE550FC323F389A600D6E822 /* VC+MergeAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE550FC223F389A600D6E822 /* VC+MergeAudio.swift */; };
+		DEA5DAF123F38D650045CD8F /* VC + MergeImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA5DAF023F38D650045CD8F /* VC + MergeImages.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		1B9E064E23F316CF0042A553 /* top.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = top.JPG; sourceTree = "<group>"; };
 		DE550FC023F3893100D6E822 /* VC+MergeVideos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC+MergeVideos.swift"; sourceTree = "<group>"; };
 		DE550FC223F389A600D6E822 /* VC+MergeAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC+MergeAudio.swift"; sourceTree = "<group>"; };
+		DEA5DAF023F38D650045CD8F /* VC + MergeImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC + MergeImages.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				1B9E061F23F30C210042A553 /* AppDelegate.swift */,
 				1B9E062123F30C210042A553 /* SceneDelegate.swift */,
 				1B9E062323F30C210042A553 /* ViewController.swift */,
+				DEA5DAF023F38D650045CD8F /* VC + MergeImages.swift */,
 				DE550FC023F3893100D6E822 /* VC+MergeVideos.swift */,
 				DE550FC223F389A600D6E822 /* VC+MergeAudio.swift */,
 				1B9E062523F30C210042A553 /* Main.storyboard */,
@@ -209,6 +212,7 @@
 				1B9E062023F30C210042A553 /* AppDelegate.swift in Sources */,
 				DE550FC123F3893100D6E822 /* VC+MergeVideos.swift in Sources */,
 				1B9E062223F30C210042A553 /* SceneDelegate.swift in Sources */,
+				DEA5DAF123F38D650045CD8F /* VC + MergeImages.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
