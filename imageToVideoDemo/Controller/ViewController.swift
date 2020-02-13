@@ -44,7 +44,10 @@ class ViewController: UIViewController {
 
     @IBAction func playButtonAction(_ sender: Any) {
         self.statusLabel.text = ""
-//        presentFinalVideo()
+        presentFinalVideo()
+    }
+
+    func presentFinalVideo() {
         let localAudioAsset = AVAsset(url: Bundle.main.url(forResource: "sampleAudio", withExtension: "mp3")!)
         let localVideoAsset = AVAsset(url: Bundle.main.url(forResource: "sampleVideo", withExtension: "mp4")!)
         self.buildVideoFromImageArray { [weak self] (imageVideoUrl) in
@@ -59,11 +62,6 @@ class ViewController: UIViewController {
                                audioAsset: localAudioAsset)
             }
         }
-
-    }
-
-    func presentFinalVideo() {
-        
     }
 
     func playVideo(with url: URL) {
@@ -118,7 +116,6 @@ extension ViewController: MPMediaPickerControllerDelegate {
             guard let song = selectedSongs.first else { return }
 
             let url = song.value(forProperty: MPMediaItemPropertyAssetURL) as? URL
-//      self.audioAsset = (url == nil) ? nil : AVAsset(url: url!)
             let title = (url == nil) ? "Asset Not Available" : "Asset Loaded"
             let message = (url == nil) ? "Audio Not Loaded" : "Audio Loaded"
 
