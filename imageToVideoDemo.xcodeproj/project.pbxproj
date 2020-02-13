@@ -32,6 +32,8 @@
 		DE36623023F3D1AC00A9F16D /* sampleAudio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DE36622F23F3D1AC00A9F16D /* sampleAudio.mp3 */; };
 		DE36623223F3FFCB00A9F16D /* VC+MergeRW.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE36623123F3FFCB00A9F16D /* VC+MergeRW.swift */; };
 		DE36623523F403B400A9F16D /* VideoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE36623423F403B400A9F16D /* VideoHelper.swift */; };
+		DE42E43823F53E920028DEB0 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42E43723F53E920028DEB0 /* ImageExtension.swift */; };
+		DE42E43C23F55C210028DEB0 /* HannBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42E43B23F55C210028DEB0 /* HannBlur.swift */; };
 		DEA5DAF123F38D650045CD8F /* VC+MergeImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA5DAF023F38D650045CD8F /* VC+MergeImages.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +65,8 @@
 		DE36622F23F3D1AC00A9F16D /* sampleAudio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sampleAudio.mp3; sourceTree = "<group>"; };
 		DE36623123F3FFCB00A9F16D /* VC+MergeRW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC+MergeRW.swift"; sourceTree = "<group>"; };
 		DE36623423F403B400A9F16D /* VideoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoHelper.swift; sourceTree = "<group>"; };
+		DE42E43723F53E920028DEB0 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
+		DE42E43B23F55C210028DEB0 /* HannBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HannBlur.swift; sourceTree = "<group>"; };
 		DEA5DAF023F38D650045CD8F /* VC+MergeImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC+MergeImages.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +119,8 @@
 				1B9E062323F30C210042A553 /* ViewController.swift */,
 				DE36623123F3FFCB00A9F16D /* VC+MergeRW.swift */,
 				DEA5DAF023F38D650045CD8F /* VC+MergeImages.swift */,
+				DE42E43723F53E920028DEB0 /* ImageExtension.swift */,
+				DE42E43B23F55C210028DEB0 /* HannBlur.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -242,6 +248,8 @@
 				DE36623223F3FFCB00A9F16D /* VC+MergeRW.swift in Sources */,
 				1B9E062423F30C210042A553 /* ViewController.swift in Sources */,
 				DE36623523F403B400A9F16D /* VideoHelper.swift in Sources */,
+				DE42E43C23F55C210028DEB0 /* HannBlur.swift in Sources */,
+				DE42E43823F53E920028DEB0 /* ImageExtension.swift in Sources */,
 				1B9E062023F30C210042A553 /* AppDelegate.swift in Sources */,
 				1B9E062223F30C210042A553 /* SceneDelegate.swift in Sources */,
 				DEA5DAF123F38D650045CD8F /* VC+MergeImages.swift in Sources */,

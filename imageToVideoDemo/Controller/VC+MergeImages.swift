@@ -11,43 +11,14 @@ import Photos
 
 
 extension ViewController {
-    func drawImage(image foreGroundImage: UIImage, inImage backgroundImage: UIImage, atPoint point: CGPoint) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(backgroundImage.size, false, 0.0)
-        backgroundImage.draw(in: CGRect.init(x: 0, y: 0, width: backgroundImage.size.width, height: backgroundImage.size.height))
-        foreGroundImage.draw(in: CGRect.init(x: 200, y: 0, width: foreGroundImage.size.width - 400, height: foreGroundImage.size.height - 400))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage!
-    }
 
+    func buildVideoFromImageArray(pathUrl: @escaping ((URL) -> Void)) {
+        showActivity(true)
+        let imageNames = ["frame0.JPG", "frame1.JPG", "frame2.JPG", "bottom.JPG", "frame4.JPG", "frame5.JPG"]
 
-
-
-    func buildVideoFromImageArray() {
-        let img = self.drawImage(image: UIImage(named: "frame0.JPG")!, inImage: UIImage(named: "blurrImage.JPG")!, atPoint: CGPoint.zero)
-
-
-        let bottomImage = UIImage(named: "top.JPG")
-        let topImage = UIImage(named: "bottom.JPG")
-
-        let size = CGSize(width: 300, height: 300)
-        UIGraphicsBeginImageContext(size)
-
-        let areaSize = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        bottomImage!.draw(in: areaSize)
-
-        topImage!.draw(in: areaSize, blendMode: .normal, alpha: 0.8)
-
-        let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-
-        selectedPhotosArray.append(img)
-        selectedPhotosArray.append(newImage)
-        selectedPhotosArray.append(UIImage(named: "frame1.JPG")!)
-        selectedPhotosArray.append(UIImage(named: "frame2.JPG")!)
-        selectedPhotosArray.append(UIImage(named: "frame3.JPG")!)
-        selectedPhotosArray.append(UIImage(named: "frame0.JPG")!)
-        selectedPhotosArray.append(UIImage(named: "frame5.JPG")!)
+        selectedPhotosArray = imageNames.compactMap({ (imageName) -> UIImage in
+            return (UIImage(named: imageName)?.drawImageSameBackground())!
+        })
 
         imageArrayToVideoURL = NSURL(fileURLWithPath: NSHomeDirectory() + "/Documents/video1.MP4")
         removeFileAtURLIfExists(url: imageArrayToVideoURL)
@@ -112,10 +83,11 @@ extension ViewController {
                 }
                 videoWriterInput.markAsFinished()
                 videoWriter.finishWriting { () -> Void in
+                    self.showActivity(true)
+                    pathUrl(self.imageArrayToVideoURL as URL)
                     DispatchQueue.main.async {
                         self.statusLabel.text = "Video from images has been created."
                     }
-                    print("-----video1 url = \(self.imageArrayToVideoURL)")
                     self.asset = AVAsset(url: self.imageArrayToVideoURL as URL)
                     //self.exportVideoWithAnimation()
                 }

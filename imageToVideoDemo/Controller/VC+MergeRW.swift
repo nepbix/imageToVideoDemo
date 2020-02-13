@@ -15,8 +15,7 @@ extension ViewController {
     func mergeVid(with firstAsset: AVAsset, secondAsset: AVAsset, audioAsset: AVAsset?) {
 //        guard let firstAsset = firstAsset, let secondAsset = secondAsset else { return }
 
-        activityMonitor.startAnimating()
-        activityMonitor.isHidden = false
+        showActivity(true)
 
         // 1 - Create AVMutableComposition object. This object will hold your AVMutableCompositionTrack instances.
         let mixComposition = AVMutableComposition()
@@ -79,6 +78,7 @@ extension ViewController {
         dateFormatter.timeStyle = .short
         let date = dateFormatter.string(from: Date())
         let url = documentDirectory.appendingPathComponent("mergeVideo-\(date).mov")
+        removeFileAtURLIfExists(url: url as NSURL)
 
         // 5 - Create Exporter
         guard let exporter = AVAssetExportSession(asset: mixComposition, presetName: AVAssetExportPresetHighestQuality) else { return }
@@ -98,16 +98,16 @@ extension ViewController {
     func exportDidFinish(_ session: AVAssetExportSession) {
 
         // Cleanup assets
-        activityMonitor.stopAnimating()
-        activityMonitor.isHidden = true
+        showActivity(false)
 
         guard session.status == AVAssetExportSession.Status.completed,
             let outputURL = session.outputURL else { return }
-
         let saveVideoToPhotos = {
             PHPhotoLibrary.shared().performChanges({ PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: outputURL) }) { saved, error in
-                let success = saved && (error == nil)
-                self.playVideo(with: outputURL)
+//                let success = saved && (error == nil)
+//                if success {
+                    self.playVideo(with: outputURL)
+//                }
             }
         }
 

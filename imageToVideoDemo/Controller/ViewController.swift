@@ -16,11 +16,10 @@ import AVKit
 class ViewController: UIViewController {
 
     let outputSize = CGSize(width: 1920, height: 1080)
-    let imagesPerSecond: TimeInterval = 3 //each image will be stay for 3 secs
+    let imagesPerSecond: TimeInterval = 2 //each image will be stay for 3 secs
     var selectedPhotosArray = [UIImage]()
     var imageArrayToVideoURL = NSURL()
     let audioIsEnabled: Bool = false //if your video has no sound
-
 
     var asset: AVAsset!
 
@@ -33,7 +32,9 @@ class ViewController: UIViewController {
     }
 
     @IBAction func mergeImageAction(_ sender: Any) {
-        self.buildVideoFromImageArray()
+        self.buildVideoFromImageArray(pathUrl: { [weak self] localUrl in
+            self?.playVideo(with: localUrl)
+        })
     }
 
 
@@ -43,11 +44,26 @@ class ViewController: UIViewController {
 
     @IBAction func playButtonAction(_ sender: Any) {
         self.statusLabel.text = ""
-        if let galleryAsset = self.asset {
-            let localVideoAsset = AVAsset(url: imageArrayToVideoURL as URL)
-            let localAudioAsset = AVAsset(url: Bundle.main.url(forResource: "sampleAudio", withExtension: "mp3")!)
-            self.mergeVid(with: localVideoAsset, secondAsset: galleryAsset, audioAsset: localAudioAsset)
+//        presentFinalVideo()
+        let localAudioAsset = AVAsset(url: Bundle.main.url(forResource: "sampleAudio", withExtension: "mp3")!)
+        let localVideoAsset = AVAsset(url: Bundle.main.url(forResource: "sampleVideo", withExtension: "mp4")!)
+        self.buildVideoFromImageArray { [weak self] (imageVideoUrl) in
+            let imageCollageVideo = AVAsset(url: imageVideoUrl as URL)
+            if let galleryAsset = self?.asset {
+                self?.mergeVid(with: imageCollageVideo,
+                               secondAsset: galleryAsset,
+                               audioAsset: localAudioAsset)
+            } else {
+                self?.mergeVid(with: imageCollageVideo,
+                               secondAsset: localVideoAsset,
+                               audioAsset: localAudioAsset)
+            }
         }
+
+    }
+
+    func presentFinalVideo() {
+        
     }
 
     func playVideo(with url: URL) {
@@ -75,6 +91,19 @@ extension ViewController: UIImagePickerControllerDelegate {
         let alert = UIAlertController(title: "Asset Loaded", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
         present(alert, animated: true, completion: nil)
+    }
+
+
+
+    func showActivity(_ bool: Bool) {
+        DispatchQueue.main.async {
+            self.activityMonitor.isHidden = !bool
+            if bool {
+                self.activityMonitor.startAnimating()
+            } else {
+                self.activityMonitor.stopAnimating()
+            }
+        }
     }
 }
 

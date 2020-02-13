@@ -62,10 +62,6 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fKH-QE-fsp">
-                                <rect key="frame" x="16" y="591" width="91" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eyw-sE-G8k">
                                 <rect key="frame" x="16" y="590" width="382" height="50"/>
                                 <color key="backgroundColor" red="0.2534893406" green="0.5" blue="0.32794431280000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
